@@ -1,0 +1,216 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.4.0
+    hooks:
+      - id: trailing-whitespace
+      - id: pretty-format-json
+        args: [--autofix]
+        exclude: ^frontend/
+      - id: requirements-txt-fixer
+      - id: sort-simple-yaml
+      - id: name-tests-test
+        exclude: ".*/tests/utils/"
+      - id: mixed-line-ending
+      - id: fix-encoding-pragma
+      - id: end-of-file-fixer
+        exclude: ^frontend/
+      - id: detect-private-key
+      - id: debug-statements
+      - id: check-yaml
+      - id: check-symlinks
+      - id: check-merge-conflict
+      - id: check-json
+      - id: check-executables-have-shebangs
+        exclude: ^frontend/
+      - id: check-docstring-first
+      - id: check-case-conflict
+      - id: fix-byte-order-marker
+      - id: check-builtin-literals
+      - id: check-ast
+      - id: check-added-large-files
+        args: ['--maxkb=1000']
+  - repo: https://github.com/igorshubovych/markdownlint-cli
+    rev: v0.34.0
+    hooks:
+      - id: markdownlint
+        args: ["--disable", "MD033"]
+  - repo: https://github.com/Lucas-C/pre-commit-hooks-nodejs
+    rev: v1.1.2
+    hooks:
+      - id: dockerfile_lint
+  - repo: https://github.com/pycqa/isort
+    rev: "5.12.0"
+    hooks:
+      - id: isort
+        alias: isort-backend
+        name: isort backend
+        files: ^backend/
+        args: [ "--sp", "backend/pyproject.toml" ]
+      - id: isort
+        alias: isort-time-driven-needs
+        name: isort time-driven-needs
+        files: ^time-driven-needs/
+        args: [ "--sp", "time-driven-needs/pyproject.toml" ]
+      - id: isort
+        alias: isort-footprint
+        name: isort footprint
+        files: ^footprint/
+        args: [ "--sp", "footprint/pyproject.toml" ]
+      - id: isort
+        alias: isort-routing
+        name: isort routing
+        files: ^routing/
+        args: [ "--sp", "routing/pyproject.toml" ]
+      - id: isort
+        alias: isort-shared
+        name: isort shared
+        files: ^shared/
+        args: [ "--sp", "shared/pyproject.toml" ]
+  - repo: https://github.com/asottile/add-trailing-comma
+    rev: v3.1.0
+    hooks:
+      - id: add-trailing-comma
+  - repo: https://github.com/ambv/black
+    rev: "23.3.0"
+    hooks:
+      - id: black
+        language_version: python3
+  - repo: https://github.com/pycqa/flake8
+    rev: "7.0.0"
+    hooks:
+      - id: flake8
+        additional_dependencies:
+          [
+            "flake8-blind-except==0.2.*",
+            "flake8-bugbear==23.1.*",
+            "flake8-builtins==2.1.*",
+            "flake8-comprehensions==3.10.*",
+            "flake8-debugger==4.1.*",
+            "flake8-docstrings==1.7.*",
+            "flake8-logging-format==0.9.*",
+            "flake8-module-name==0.2.*",
+            "flake8-print==5.0.*",
+            "flake8_commas==2.1.*",
+          ]
+        exclude: (^|/)(notebooks/|backend/alembic/versions)
+  - repo: https://github.com/jumanjihouse/pre-commit-hooks
+    rev: 3.0.0
+    hooks:
+      - id: shellcheck
+        additional_dependencies: []
+  - repo: https://github.com/asottile/pyupgrade
+    rev: v2.32.0
+    hooks:
+      - id: pyupgrade
+        name: pyupgrade-py
+  - repo: https://github.com/PyCQA/pylint
+    rev: v3.0.3
+    hooks:
+      - id: pylint
+        alias: pylint-routing
+        name: pylint routing
+        language: system
+        entry: pylint
+        types: [ python ]
+        files: ^routing/routing_engine
+      - id: pylint
+        alias: pylint-backend
+        name: pylint backend
+        language: system
+        entry: pylint
+        types: [ python ]
+        files: ^backend/backend
+      - id: pylint
+        alias: pylint-footprint
+        name: pylint footprint
+        language: system
+        entry: pylint
+        types: [ python ]
+        files: ^footprint/footprint
+      - id: pylint
+        alias: pylint-time-driven-needs
+        name: pylint time-driven-needs
+        language: system
+        entry: pylint
+        types: [ python ]
+        files: ^time-driven-needs/time_driven_needs
+      - id: pylint
+        alias: pylint-shared
+        name: pylint shared
+        language: system
+        entry: pylint
+        types: [ python ]
+        files: ^shared/nlp_digital_shared
+      - id: pylint
+        alias: pylint-routing-tests
+        name: pylint routing tests
+        language: system
+        entry: pylint --disable=too-many-positional-arguments
+        types: [ python ]
+        files: ^routing/tests
+      - id: pylint
+        alias: pylint-backend-tests
+        name: pylint backend tests
+        language: system
+        entry: pylint --disable=too-many-positional-arguments
+        types: [ python ]
+        files: ^backend/tests
+      - id: pylint
+        alias: pylint-footprint-tests
+        name: pylint footprint tests
+        language: system
+        entry: pylint --disable=too-many-positional-arguments
+        types: [ python ]
+        files: ^footprint/tests
+      - id: pylint
+        alias: pylint-time-driven-needs-tests
+        name: pylint time-driven-needs tests
+        language: system
+        entry: pylint --disable=too-many-positional-arguments
+        types: [ python ]
+        files: ^time-driven-needs/tests
+      - id: pylint
+        alias: pylint-shared-tests
+        name: pylint shared tests
+        language: system
+        entry: pylint --disable=too-many-positional-arguments
+        types: [ python ]
+        files: ^shared/tests
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: "v1.10.0"
+    hooks:
+      - id: mypy
+        args: ["--config-file", "pyproject.toml"]
+        additional_dependencies:
+          - "numpy<2.0.0"
+          - alembic
+          - matplotlib
+          - pandas
+          - pandas-stubs
+          - pandera
+          - pydantic
+          - types-PyYAML
+          - types-croniter
+          - types-dateparser
+          - types-python-dateutil
+          - types-redis
+          - types-requests
+        exclude: '(^|/|.*/)(notebooks|tests)/'
+  - repo: https://github.com/lk16/detect-missing-init
+    rev: v0.1.6
+    hooks:
+      - id: detect-missing-init
+        args: ["--python-folders", "backend/backend,routing/routing_engine,shared/nlp_digital_shared,time-driven-needs/time_driven_needs,footprint/footprint"]
+  - repo: https://github.com/sqlfluff/sqlfluff
+    rev: 2.1.1
+    hooks:
+      - id: sqlfluff-fix
+      - id: sqlfluff-lint
+  - repo: local
+    hooks:
+      - id: check-poetry-lock
+        name: Check if poetry.lock matches pyproject.toml
+        entry: ./scripts/check_poetry_lock.sh
+        language: script
+        files: (^|/)(pyproject\.toml|poetry\.lock)$
+        require_serial: true

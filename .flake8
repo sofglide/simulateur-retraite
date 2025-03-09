@@ -1,0 +1,33 @@
+[flake8]
+
+application-import-names = logistics_footprint
+exclude =
+    __pycache__,
+    *.egg-info,
+    *.pyc,
+    .cache,
+    .eggs,
+    .git,
+    .mypy_cache,
+    .pytest_cache,
+    .tox,
+    .venv,
+    build,
+    dist,
+    tmp,
+# B023: False positives with DAGs and lambdas.
+# E203, W503: Black does formatting.
+# G003, G004: Allow logging to use +, string.format() and f-statement.
+# E501: Line too long, handled by black.
+# C812, C816: Missing trailing comma, handled by black.
+# D100: Missing docstring in public module
+# D101: Missing docstring in public class
+# D106: Missing docstring in public nested class
+ignore = B023, E203, W503, G001, G003, G004, E501, C812, C816, D100, D101, D106
+import-order-style = pep8
+max-complexity = 10
+max-line-length = 100
+output-file = tmp/flake8.log
+tee = True
+per-file-ignores =
+    __init__.py:D104, F401
