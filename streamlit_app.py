@@ -9,12 +9,12 @@ from src.investissement_vs_marche import simulation_rachat_vs_investissement
 
 # Set the title and favicon that appear in the Browser's tab bar.
 st.set_page_config(
-    page_title="Simulateur retraite",
+    page_title="Simulateur retraite personnel de Chedlia",
     page_icon=":earth_americas:",  # This is an emoji shortcode. Could be a URL too.
 )
 st.markdown(
     """
-# :earth_africa: Simulateur retraite
+# :earth_africa: Simulateur retraite personnel de Chedlia
 
 Simulateur de retraite et comparateur de rachat de trimestres versus investissement de capital.
 """,
