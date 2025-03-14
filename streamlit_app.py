@@ -20,6 +20,8 @@ Simulateur de retraite et comparateur de rachat de trimestres versus investissem
 """,
 )
 
+st.image("assets/background.jpeg", use_container_width=True)
+
 st.write("")
 st.write("")
 
