@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import streamlit as st
 
 
 def get_rente_annuelle_rachat_trimestres(
@@ -19,4 +20,12 @@ def rendement_du_trimestre(trimestre: int) -> float:
         return 0.5
     if trimestre <= 80:
         return 0.75
-    return 0.5
+    if trimestre <= 160:
+        return 0.5
+    return 0
+
+
+def separator(count: int = 1) -> None:
+    """Print a separator."""
+    for _ in range(count):
+        st.write("")
