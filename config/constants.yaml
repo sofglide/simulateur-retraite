@@ -1,0 +1,49 @@
+
+global_params:
+  salaire_base:
+    min: 1000
+    max: 5000
+    step: 100
+
+  cout_rachat_trimestre:
+    min: 500
+    max: 5000
+    step: 100
+
+calcul_montant_retraite:
+  nombre_annees_simulation:
+    min: 1
+    max: 50
+    step: 1
+
+  affichage_calcul_retraite:
+    options:
+      - "Valeur trimestre %"
+      - "Rendement total %"
+      - "Retraite mensuelle (DT)"
+
+comparaison_rachat_vs_investissement:
+  age_rachat_trimestres:
+    min: 50
+    max: 65
+    step: 1
+  age_depart_retraite:
+    min: 60
+    max: 70
+    step: 1
+  nombre_trimestres_rachetes:
+    min: 1
+    max: 20
+    step: 1
+  nombre_annees_travaillees:
+    min: 25
+    max: 40
+    step: 1
+  rendement_attendu_du_marche:
+    min: 0.0
+    max: 30.0
+    step: 0.1
+  age_limite_simulation:
+    min: 70
+    max: 100
+    step: 1

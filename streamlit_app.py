@@ -9,7 +9,7 @@ from src.investissement_vs_marche import simulation_rachat_vs_investissement
 from src.sliders import (
     get_slider_salaire_base,
     get_slider_cout_rachat_trimestre,
-    get_slider_nombre_annee_simulation,
+    get_slider_nombre_annees_simulation,
     get_selecteur_affichage_calcul_retraite,
     get_slider_age_rachat_trimestres,
     get_slider_age_depart_retraite,
@@ -48,7 +48,7 @@ separator(2)
 
 st.header("Calcul montant retraite", divider="gray")
 
-intervalle_annees = get_slider_nombre_annee_simulation()
+intervalle_annees = get_slider_nombre_annees_simulation()
 
 separator()
 retraite = calcul_retraite_tunisie(salaire_base, cout_trimestre)
